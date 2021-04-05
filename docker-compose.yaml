@@ -1,0 +1,10 @@
+version: "2.0"
+
+services:
+  des-service:
+    image: python:3.7.10-buster
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src
+    command : ["/bin/sh","-c","cd usr/src && pip3 install --user --upgrade tensorflow && pip3 install keras && pip3 install fastapi && pip3 install uvicorn && uvicorn main:app --reload --host='0.0.0.0' --port=8080"]
